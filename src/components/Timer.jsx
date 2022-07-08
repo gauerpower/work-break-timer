@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react";
+import bell from "../bell.mp3"
+
 
 function Timer(props) {
-
     const [isWorking, setWorking] = useState(true);
     const [timerSecond, setTimerSecond] = useState(0);
     const [isTicking, toggleTicking] = useState(false);
-        
+    
     function start() {
         toggleTicking(true);
         props.handleWhetherSelectorsShouldAppear(false)
@@ -23,43 +24,74 @@ function Timer(props) {
         setWorking(true)
     }
 
-    function decreaseTime() {
-        const currentTimerSecond = timerSecond;
-        const currentTimerMinute = props.timerMinute;
-        const currentIsWorking = isWorking;
-        if (currentTimerSecond !== 0) {
-            setTimerSecond(currentTimerSecond - 1);
-            return;
-        }
-        if (currentTimerSecond === 0 && currentTimerMinute !== 0) {
-            props.decrementTimerMinute();
-            setTimerSecond(59);
-            return;
-        }
-        if (currentTimerSecond === 0 && currentTimerMinute === 0){
-            if (currentIsWorking) {
-                props.increaseWorkSessionCount();
-            } else {
-                props.increaseBreakCount();
-            }
-            props.ringBell();
-            props.toggleTimerSource(!currentIsWorking);
-            setWorking(!currentIsWorking);
-            return;
-        }
+    function ringBell() {
+        const bellAudio = new Audio(bell);
+        bellAudio.play();
     }
+
+    // function decreaseTime() {
+    //     const currentTimerSecond = timerSecond;
+    //     const currentTimerMinute = props.timerMinute;
+    //     const currentIsWorking = isWorking;
+    //     if (currentTimerSecond !== 0) {
+    //         setTimerSecond(currentTimerSecond - 1);
+    //         return;
+    //     }
+    //     if (currentTimerSecond === 0 && currentTimerMinute !== 0) {
+    //         props.decrementTimerMinute();
+    //         setTimerSecond(59);
+    //         return;
+    //     }
+    //     if (currentTimerSecond === 0 && currentTimerMinute === 0){
+    //         if (currentIsWorking) {
+    //             props.increaseWorkSessionCount();
+    //         } else {
+    //             props.increaseBreakCount();
+    //         }
+    //         ringBell();
+    //         props.flash();
+    //         props.toggleTimerSource(!currentIsWorking);
+    //         setWorking(!currentIsWorking);
+    //         return;
+    //     }
+    // }
 
     
     useEffect(()=> {
         let countdown;
         if (isTicking) {
-            countdown = setInterval(decreaseTime, 10);
+            countdown = setInterval(()=> {
+                const currentTimerSecond = timerSecond;
+                const currentTimerMinute = props.timerMinute;
+                const currentIsWorking = isWorking;
+                if (currentTimerSecond !== 0) {
+                    setTimerSecond(currentTimerSecond - 1);
+                    return;
+                }
+                if (currentTimerSecond === 0 && currentTimerMinute !== 0) {
+                    props.decrementTimerMinute();
+                    setTimerSecond(59);
+                    return;
+                }
+                if (currentTimerSecond === 0 && currentTimerMinute === 0){
+                    if (currentIsWorking) {
+                        props.increaseWorkSessionCount();
+                    } else {
+                        props.increaseBreakCount();
+                    }
+                    ringBell();
+                    props.flash();
+                    props.toggleTimerSource(!currentIsWorking);
+                    setWorking(!currentIsWorking);
+                    return;
+                }
+            }, 10);
         }
         if (!isTicking) {
             clearInterval(countdown)
         }
         return () => clearInterval(countdown);
-    }, [decreaseTime, props, isTicking])
+    }, [props, isTicking, isWorking, timerSecond])
 
         return (
             <div>

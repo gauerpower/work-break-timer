@@ -9,9 +9,10 @@ root.render(
 
 // =========================
 // Modifications to eventually make:
-// •Refactor Classes into functions with hooks
 // •Customize CSS
 // •Refactor to DRY things out
-// •Set up chime and color shift (probably need to give the app a border 
-// or else this will look weird)
-// •Create work/break session counters
+// •Potentially could tweak the "flash"/conditional render to change color
+//  based on work vs. break status. This would require lifting up isWorking state
+//  to the App component so that it can be used in the conditional render.
+//  (Maybe more trouble than it's worth? Try coloring & adding borders to the
+//  app and see if that makes the UI look fine.)
