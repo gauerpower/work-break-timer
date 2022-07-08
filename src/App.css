@@ -37,6 +37,24 @@ button {
     display: flex;
 }
 
+.timer-container {
+    border: 2px solid #263646;
+    border-radius: 25px;
+    width: 250px;
+    text-align: center;
+    padding: 10px;
+}
+
+.timer-display {
+    font-size: 2rem;
+}
+
+.timer-controls {
+    margin-bottom: 40px;
+    margin-top: 20px;
+    text-align: center;
+}
+
 .selector {
     margin: 0 40px;
     display: flex;
@@ -55,20 +73,3 @@ button {
     margin: 0 10px;
 }
 
-.timer-container {
-    border: 2px solid #263646;
-    border-radius: 25px;
-    width: 250px;
-    text-align: center;
-    padding: 10px;
-}
-
-.timer-display {
-    font-size: 2rem;
-}
-
-.timer-controls {
-    margin-bottom: 40px;
-    margin-top: 20px;
-    text-align: center;
-}
