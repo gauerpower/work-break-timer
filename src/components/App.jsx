@@ -5,6 +5,7 @@ import WorkSelector from "./WorkSelector.jsx"
 import Timer from "./Timer.jsx"
 import Counters from "./Counters.jsx"
 import "../App.css"
+import bell from "../bell.mp3"
 
 function App(){
     const [workLength, setWorkLength] = useState(25);
@@ -13,6 +14,7 @@ function App(){
     const [selectorVisibility, setSelectorVisibility] = useState(true);
     const [workSessionCount, setWorkSessionCount] = useState(0);
     const [breakCount, setBreakCount] = useState(0);
+    
 
     function increaseBreakLength() {
         setBreakLength(breakLength + 1);
@@ -60,6 +62,11 @@ function App(){
         setBreakCount(breakCount + 1);
     }
 
+    function ringBell() {
+        const bellAudio = new Audio(bell);
+        bellAudio.play();
+    }
+
     return (
     <div className="App">
         <h1>Work/Break Timer</h1>
@@ -71,6 +78,7 @@ function App(){
                 handleWhetherSelectorsShouldAppear={handleWhetherSelectorsShouldAppear}
                 increaseWorkSessionCount={increaseWorkSessionCount}
                 increaseBreakCount={increaseBreakCount}
+                ringBell={ringBell}
         />
        <div className="selector-area">
         <BreakSelector 

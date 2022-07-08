@@ -42,6 +42,7 @@ function Timer(props) {
             } else {
                 props.increaseBreakCount();
             }
+            props.ringBell();
             props.toggleTimerSource(!currentIsWorking);
             setWorking(!currentIsWorking);
             return;
