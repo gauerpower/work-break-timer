@@ -1,13 +1,28 @@
 import React from "react";
 
 function WorkSelector(props) {
+    function decreaseCounter() {
+        if (props.workLength > 1) {
+            props.decreaseWorkLength();
+
+        } else {
+            return;
+        }
+    }
+    function increaseCounter() {
+        if (props.workLength <= 60) {
+            props.increaseWorkLength();
+        } else {
+            return;
+        }
+    }
     return (
-        <div className="selector">
+        <div style={{visibility: props.selectorsShouldAppear ? "visible" : "hidden"}}className="selector">
             <h3>Select Work Session Length</h3>
             <div className="selector-button-area">
-            <button>+</button>
-            <p className="selected-interval">{props.workLength}</p>
-            <button>-</button>
+                <button onClick={decreaseCounter}>-</button>
+                <p className="selected-interval">{props.workLength}</p>
+                <button onClick={(increaseCounter)}>+</button>
             </div>
         </div>
     )

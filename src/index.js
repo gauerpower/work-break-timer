@@ -11,3 +11,7 @@ root.render(
 // Modifications to eventually make:
 // •Refactor Classes into functions with hooks
 // •Customize CSS
+// •Refactor to DRY things out
+// •Set up chime and color shift (probably need to give the app a border 
+// or else this will look weird)
+// •Create work/break session counters
