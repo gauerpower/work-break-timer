@@ -37,6 +37,11 @@ function Timer(props) {
             return;
         }
         if (currentTimerSecond === 0 && currentTimerMinute === 0){
+            if (currentIsWorking) {
+                props.increaseWorkSessionCount();
+            } else {
+                props.increaseBreakCount();
+            }
             props.toggleTimerSource(!currentIsWorking);
             setWorking(!currentIsWorking);
             return;

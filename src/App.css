@@ -33,10 +33,6 @@ button {
     border-radius: 2px;
 }
 
-.selector-area {
-    display: flex;
-}
-
 .timer-container {
     border: 2px solid #263646;
     border-radius: 25px;
@@ -55,6 +51,12 @@ button {
     text-align: center;
 }
 
+.selector-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .selector {
     margin: 0 40px;
     display: flex;
@@ -64,6 +66,8 @@ button {
 }
 
 .selector-button-area {
+    margin: auto;
+    display: inline-block;
     display: flex;
     align-items: center;
 }

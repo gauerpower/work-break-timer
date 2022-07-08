@@ -19,7 +19,9 @@ function BreakSelector(props) {
 
 // Note to self: Visibility leaves elements in place. Display removes them from HTML flow.
     return (
-        <div style={{visibility: props.selectorsShouldAppear ? "visible" : "hidden"}} className="selector">
+        <div 
+        style={{display: props.selectorsShouldAppear ? null : "none"}} 
+        className="selector">
             <h3>Select Break Length</h3>
             <div className="selector-button-area">
                 <button onClick={decreaseCounter}>-</button>
