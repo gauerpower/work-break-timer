@@ -28,34 +28,6 @@ function Timer(props) {
         const bellAudio = new Audio(bell);
         bellAudio.play();
     }
-
-    // function decreaseTime() {
-    //     const currentTimerSecond = timerSecond;
-    //     const currentTimerMinute = props.timerMinute;
-    //     const currentIsWorking = isWorking;
-    //     if (currentTimerSecond !== 0) {
-    //         setTimerSecond(currentTimerSecond - 1);
-    //         return;
-    //     }
-    //     if (currentTimerSecond === 0 && currentTimerMinute !== 0) {
-    //         props.decrementTimerMinute();
-    //         setTimerSecond(59);
-    //         return;
-    //     }
-    //     if (currentTimerSecond === 0 && currentTimerMinute === 0){
-    //         if (currentIsWorking) {
-    //             props.increaseWorkSessionCount();
-    //         } else {
-    //             props.increaseBreakCount();
-    //         }
-    //         ringBell();
-    //         props.flash();
-    //         props.toggleTimerSource(!currentIsWorking);
-    //         setWorking(!currentIsWorking);
-    //         return;
-    //     }
-    // }
-
     
     useEffect(()=> {
         let countdown;
@@ -85,7 +57,7 @@ function Timer(props) {
                     setWorking(!currentIsWorking);
                     return;
                 }
-            }, 10);
+            }, 1000);
         }
         if (!isTicking) {
             clearInterval(countdown)
@@ -96,7 +68,7 @@ function Timer(props) {
         return (
             <div>
                 <div className="timer-container">
-                    <h3>{isWorking === true ? "Working" : "On a break"}</h3>
+                    <h2>{isWorking === true ? "Working" : "On a break"}</h2>
                     <span className="timer-display">{props.timerMinute}</span>
                     <span className="timer-display">:</span>
                     <span className="timer-display">{timerSecond === 0 ? "00" 
@@ -113,6 +85,42 @@ function Timer(props) {
 }
 
 export default Timer;
+
+
+
+// decreaseTime() function from when it was outside setTimeout
+// (included here as a reference)
+
+    // function decreaseTime() {
+    //     const currentTimerSecond = timerSecond;
+    //     const currentTimerMinute = props.timerMinute;
+    //     const currentIsWorking = isWorking;
+    //     if (currentTimerSecond !== 0) {
+    //         setTimerSecond(currentTimerSecond - 1);
+    //         return;
+    //     }
+    //     if (currentTimerSecond === 0 && currentTimerMinute !== 0) {
+    //         props.decrementTimerMinute();
+    //         setTimerSecond(59);
+    //         return;
+    //     }
+    //     if (currentTimerSecond === 0 && currentTimerMinute === 0){
+    //         if (currentIsWorking) {
+    //             props.increaseWorkSessionCount();
+    //         } else {
+    //             props.increaseBreakCount();
+    //         }
+    //         ringBell();
+    //         props.flash();
+    //         props.toggleTimerSource(!currentIsWorking);
+    //         setWorking(!currentIsWorking);
+    //         return;
+    //     }
+    // }
+
+
+
+
 
 
 // Old class syntax (here for reference):

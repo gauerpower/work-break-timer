@@ -40,6 +40,8 @@ function App(){
 
     function resetTimerMinute() {
         setTimerMinute(workLength);
+        setBreakCount(0);
+        setWorkSessionCount(0);
     }
 
     function toggleTimerSource(isWorking) {
@@ -70,12 +72,11 @@ function App(){
     return (
     <div className="App"
     style={{
-  backgroundColor: timeToFlash ? "red" : "white",
+  backgroundColor: timeToFlash ? "#D52A8D" : null,
   transition: "all 1s ease",
   WebkitTransition: "all 1s ease",
   MozTransition: "all 1s ease"
-}}
->
+}}>
         <h1>Work/Break Timer</h1>
         <Timer timerMinute={timerMinute}
                 breakLength={breakLength}
@@ -107,8 +108,6 @@ function App(){
             breakCount={breakCount}
         />
     </div>)
-    
-   
 }
 
 export default App;
