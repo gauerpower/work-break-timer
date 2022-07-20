@@ -97,15 +97,11 @@ button {
     padding: 50px;
 }
 
-span {
+.timer-display {
     color: var(--interiorTextColor);
     -webkit-text-stroke: 1px var(--textShadowColor);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 900;
-}
-
-
-.timer-display {
     font-size: 4rem;
 }
 

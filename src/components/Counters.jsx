@@ -3,8 +3,6 @@ import React from "react";
 function Counters(props) {
     const sessionsText = props.workSessionCount === 1 ? "session" : "sessions";
     const breaksText = props.breakCount === 1 ? "break" : "breaks";
-
-
     return(
         <div className="counter-container"
         style={{display: props.countersShouldAppear ? "block" : "none"}}
@@ -14,7 +12,5 @@ function Counters(props) {
         </div>
     )
 }
-
-
 
 export default Counters;

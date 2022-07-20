@@ -17,7 +17,6 @@ function BreakSelector(props) {
         }
     }
 
-// Note to self: Visibility leaves elements in place. Display removes them from HTML flow.
     return (
         <div 
         style={{display: props.selectorsShouldAppear ? null : "none"}} 
@@ -30,8 +29,6 @@ function BreakSelector(props) {
             </div>
         </div>
     )
-
 }
-
 
 export default BreakSelector;

@@ -4,7 +4,6 @@ import BreakSelector from "./BreakSelector.jsx"
 import WorkSelector from "./WorkSelector.jsx"
 import Timer from "./Timer.jsx"
 import Counters from "./Counters.jsx"
-import "../App.css"
 
 function App(){
     const [workLength, setWorkLength] = useState(25);
@@ -15,7 +14,6 @@ function App(){
     const [breakCount, setBreakCount] = useState(0);
     const [timeToFlash, setFlash] = useState(false);
     
-
     function increaseBreakLength() {
         setBreakLength(breakLength + 1);
     }
@@ -86,27 +84,23 @@ function App(){
                 handleWhetherSelectorsShouldAppear={handleWhetherSelectorsShouldAppear}
                 increaseWorkSessionCount={increaseWorkSessionCount}
                 increaseBreakCount={increaseBreakCount}
-                flash={flash}
-        />
+                flash={flash}/>
        <div className="selector-area">
+       <WorkSelector
+        workLength={workLength}
+            increaseWorkLength={increaseWorkLength}
+            decreaseWorkLength={decreaseWorkLength}
+            selectorsShouldAppear={selectorVisibility}/>
         <BreakSelector 
         breakLength={breakLength}
             increaseBreakLength={increaseBreakLength}
             decreaseBreakLength={decreaseBreakLength}
-            selectorsShouldAppear={selectorVisibility}
-        />
-        <WorkSelector
-        workLength={workLength}
-            increaseWorkLength={increaseWorkLength}
-            decreaseWorkLength={decreaseWorkLength}
-            selectorsShouldAppear={selectorVisibility}
-        />
+            selectorsShouldAppear={selectorVisibility} />
         </div>
         <Counters 
             countersShouldAppear={!selectorVisibility}
             workSessionCount={workSessionCount}
-            breakCount={breakCount}
-        />
+            breakCount={breakCount}/>
     </div>)
 }
 

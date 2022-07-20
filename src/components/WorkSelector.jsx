@@ -10,12 +10,13 @@ function WorkSelector(props) {
         }
     }
     function increaseCounter() {
-        if (props.workLength <= 60) {
+        if (props.workLength < 60) {
             props.increaseWorkLength();
         } else {
             return;
         }
     }
+
     return (
         <div 
         style={{display: props.selectorsShouldAppear ? null : "none"}}
@@ -24,7 +25,7 @@ function WorkSelector(props) {
             <div className="selector-button-area">
                 <button onClick={decreaseCounter}>-</button>
                 <p className="selected-interval">{props.workLength}</p>
-                <button onClick={(increaseCounter)}>+</button>
+                <button onClick={increaseCounter}>+</button>
             </div>
         </div>
     )
